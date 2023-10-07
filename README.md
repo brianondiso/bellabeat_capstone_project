@@ -1,9 +1,9 @@
 # BellaBeat Google Data Analytics Capstone Project
 ---
-title: "bellabeat_case_study"
-author: "Brian Ondiso"
-date: "`r Sys.Date()`"
-output: html_document
+#### Title: Bellabeat_case_study
+#### Author: Brian Ondiso
+#### Date: 2023-10-07
+
 ---
 
 ## About The Company
