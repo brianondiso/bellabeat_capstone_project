@@ -1,9 +1,9 @@
 # BellaBeat Google Data Analytics Capstone Project
 ---
-title: "bellabeat_case_study"
-author: "Brian Ondiso"
-date: "`r Sys.Date()`"
-output: html_document
+#### Title: Bellabeat_case_study
+#### Author: Brian Ondiso
+#### Date: 2023-10-07
+
 ---
 
 ## About The Company
@@ -21,19 +21,22 @@ Urška Sršen: Bellabeat’s co-founder and Chief Creative Officer
 Bellabeat marketing analytics team
 
 ## 2. Prepare
-Data Source: FitBit Fitness Tracker Data by MÖBIUS Thirty eligible Fitbit users consented to the submission of personal tracker data, including minute-level output for physical activity, heart rate, and sleep monitoring. Individual reports can be parsed by export session ID (column A) or timestamp (column B). Variation between output represents use of different types of Fitbit trackers and individual tracking behaviors/preferences. The data set contains 18 csv files.
+Data Source: [Fitbit Fitness Tracker Data](https://www.kaggle.com/datasets/arashnic/fitbit/data) by MÖBIUS Thirty eligible Fitbit users consented to the submission of personal tracker data, including minute-level output for physical activity, heart rate, and sleep monitoring. Individual reports can be parsed by export session ID (column A) or timestamp (column B). Variation between output represents use of different types of Fitbit trackers and individual tracking behaviors/preferences. The data set contains 18 csv files.
+
+
+![FitBit Fitness Tracker Data](https://github.com/brianondiso/bellabeat_capstone_project/blob/main/images/image_data_cover.webp)
 
 ## Roccc Analysis
 
-*Reliability : Low – dataset was collected from 30 individuals whose gender is unknown.
-*Originality : Low – third party data collect using Amazon Mechanical Turk.
-*Comprehensive : Medium – dataset contains multiple fields on daily activity intensity, calories used, daily steps taken, daily sleep time and weight record.
-*Current : Low – This data is from May 2016, that means data is not current and user habits may have    changed over the period of time.
+*Reliability: Low – dataset was collected from 30 individuals whose gender is unknown.
+*Originality: Low – third-party data collected using Amazon Mechanical Turk.
+*Comprehensive: Medium – dataset contains multiple fields on daily activity intensity, calories used, daily steps taken, daily sleep time and weight record.
+*Current: Low – This data is from May 2016, which means data is not current and user habits may have    changed over the period of time.
 
-*Limitations of dataset
+*Limitations of the dataset
 
-Data of only 30 users is availale, a larger sample size is preferred for the more accurate analysis.
-Age of the users is unknown. Therefore ideal judgement criteria can not be defined.
+Data of only 30 users is available, a larger sample size is preferred for the more accurate analysis.
+The age of the users is unknown. Therefore ideal judgment criteria can not be defined.
 Only 8 users have submitted their weight and 14 unique users submitted their heart rate 
 reading.
 
@@ -66,26 +69,31 @@ hour_steps <- read.csv("Data/FitBit Data/Fitabase Data 4.12.16-5.12.16/hourlySte
 head(daily_activity, 2)
 
 ```
+![head data](https://github.com/brianondiso/bellabeat_capstone_project/blob/main/images/glimpse_daily_activity.png)
 ```{r}
 glimpse(sleep_day)
 ```
+![head data](https://github.com/brianondiso/bellabeat_capstone_project/blob/main/images/glimpse_daily_activity.png)
 ```{r}
 glimpse(heart_rate_seconds)
 ```
-
+![head data](https://github.com/brianondiso/bellabeat_capstone_project/blob/main/images/glimpse_heart_rate_seconds.png)
 ```{r}
 glimpse(hour_calories)
 ```
-
+![head data](https://github.com/brianondiso/bellabeat_capstone_project/blob/main/images/glimpse_hour_calories.png)
 ```{r}
 glimpse(hour_intensitities)
 ```
+![head data](https://github.com/brianondiso/bellabeat_capstone_project/blob/main/images/glimpse_hour_intensitities.png)
 ```{r}
 glimpse(hour_steps)
 ```
+![head data](https://github.com/brianondiso/bellabeat_capstone_project/blob/main/images/glimpse_hour_steps.png)
 ```{r}
 glimpse(weight_log)
 ```
+![head data](https://github.com/brianondiso/bellabeat_capstone_project/blob/main/images/glimpse_weight_log.png)
 ## How many unique participants are there in each dataframe?
 ```{r}
 n_distinct(daily_activity$Id)
@@ -94,6 +102,8 @@ n_distinct(heart_rate_seconds$Id)
 n_distinct(weight_log$Id)
 
 ```
+![distinc_participants](https://github.com/brianondiso/bellabeat_capstone_project/blob/main/images/unique_users.png)
+
 There are 33 participants in the daily activity data, 24 participants in the sleep data 14 users in the heart rate records and 8 participants in recorded their weights.
 
 What are some quick summary statistics we'd want to know about each data frame?
@@ -103,14 +113,18 @@ daily_activity %>%
   summary()
 
 ```
+![d_data summary](https://github.com/brianondiso/bellabeat_capstone_project/blob/main/images/sum_daily_data.png)
 ```{r}
 sleep_day %>% 
   select(TotalTimeInBed, TotalMinutesAsleep) %>% 
   summary()
 ```
+![sleepdaysum](https://github.com/brianondiso/bellabeat_capstone_project/blob/main/images/sleep_day_sum.png)
 ```{r}
 weight_log %>% select(WeightKg, BMI) %>% summary()
 ```
+![weightlogsum](https://github.com/brianondiso/bellabeat_capstone_project/blob/main/images/weightsum.png)
+
 BMI is a simple index of weight-to-height that is commonly used to classify underweight, overweight and obesity in adults
 
 We will put  them into 5 categories
@@ -132,6 +146,7 @@ weight_log_bmi <- weight_log %>%
 
 head(weight_log_bmi)
 ```
+![weightlogbmi](https://github.com/brianondiso/bellabeat_capstone_project/blob/main/images/weight_log_bmihead.png)
 
 We put them in percentage
 ```{r}
@@ -142,9 +157,9 @@ percentage_bmi <- weight_log_bmi %>%
 
 head(percentage_bmi)
 ```
+![percentage_bmi](https://github.com/brianondiso/bellabeat_capstone_project/blob/main/images/percentage_bmihead.png)
 
-Now we visualize the findings for presentation
-
+Now we visualize the findings for the presentation
 
 ```{r}
 ggplot(percentage_bmi, aes(x = user_type, y = total_percent)) +
