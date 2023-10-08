@@ -22,7 +22,7 @@ Urška Sršen: Bellabeat’s co-founder and Chief Creative Officer
 Bellabeat marketing analytics team
 
 ## 2. Prepare
-Data Source: [Fitbit Fitness Tracker Data](https://www.kaggle.com/datasets/arashnic/fitbit/data) by MÖBIUS Thirty eligible Fitbit users consented to the submission of personal tracker data, including minute-level output for physical activity, heart rate, and sleep monitoring. Individual reports can be parsed by export session ID (column A) or timestamp (column B). Variation between output represents use of different types of Fitbit trackers and individual tracking behaviors/preferences. The data set contains 18 csv files.
+Data Source: [Fitbit Fitness Tracker Data](https://www.kaggle.com/datasets/arashnic/fitbit/data) by MÖBIUS Thirty eligible Fitbit users consented to the submission of personal tracker data, including minute-level output for physical activity, heart rate, and sleep monitoring. Individual reports can be parsed by export session ID (column A) or timestamp (column B). Variation between output represents the use of different types of Fitbit trackers and individual tracking behaviors/preferences. The data set contains 18 CSV files.
 
 
 ![FitBit Fitness Tracker Data](https://github.com/brianondiso/bellabeat_capstone_project/blob/main/images/image_data_cover.webp)
@@ -376,7 +376,7 @@ ggplot(Activity_by_week) +
 ![va](https://github.com/brianondiso/bellabeat_capstone_project/blob/main/images/ver_active_barplt.png)
 
 
-The most active days start from Monday and keep dropping throughout the week with Sunday having the 
+The most active days start on Monday and keep dropping throughout the week with Sunday having the 
 lowest activity.
 
 
