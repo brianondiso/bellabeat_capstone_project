@@ -1,3 +1,4 @@
+
 # BellaBeat Google Data Analytics Capstone Project
 ---
 #### Title: Bellabeat_case_study
@@ -171,14 +172,14 @@ ggplot(percentage_bmi, aes(x = user_type, y = total_percent)) +
   ) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
+![boxplot](https://github.com/brianondiso/bellabeat_capstone_project/blob/main/images/Rplotbmipcnt.png)
+
 This shows that 49.3% are overweight. 
-The company can invest in weight loss supliment and also send artcles about weight management to their 
+Bellabeat can invest in weight loss supplements and also send articles about weight management to their 
 customers.
 
-
-
 ## Plotting a few explorations
-The relationship between steps taken in a day and Calories scatter plot shows a poaitive realtionship, meaning the more steps take in a day, the more calories burnt.
+The relationship between steps taken in a day and the Calories scatter plot shows a positive relationship, meaning the more steps take in a day, the more calories burnt.
 ```{r}
 ggplot(data=daily_activity, 
        aes(x=TotalSteps, y=Calories, colour = Calories)) + 
@@ -186,6 +187,8 @@ ggplot(data=daily_activity,
   labs(title = "Steps taken vs Calories", subtitle = "Relationship between 
        steps taken per day and Calories burnt")
 ```
+
+![stepsvscalories](https://github.com/brianondiso/bellabeat_capstone_project/blob/main/images/Rplotsstpsvscalories.png)
 ## What's the relationship between minutes asleep and time in bed?
 
 
@@ -194,15 +197,10 @@ ggplot(data=sleep_day,
        aes(x=TotalMinutesAsleep, y=TotalTimeInBed, alpha = TotalMinutesAsleep)) + 
   geom_point()+ labs(title = "Total Time in Bed vs Time Asleep")
 ```
-```{r}
-sleep_day %>% select(TotalTimeInBed, TotalMinutesAsleep) %>% 
-  summary()
-```
-
-
+![timeinbed](https://github.com/brianondiso/bellabeat_capstone_project/blob/main/images/timeinbedasleep.png)
 The relationship is not completely linear, indicating that individuals are spending more time 
 in bed but are not sleeping.
-The company can invest create an App that locks you out of your phone for a period of 7 hours.
+The company can invest in creating an App that locks you out of your phone for a period of 7 hours.
 
 ## Merging datasets together, sleep day and daily activity by ID column
 ```{r}
