@@ -1,3 +1,11 @@
+#libraries --------------------------------------------------------------------
+library(tidyverse)
+library(janitor)
+library(here)
+library(outliers)
+
+
+
 daily_activity <- read.csv("Data/FitBit Data/Fitabase Data 4.12.16-5.12.16/dailyActivity_merged.csv")
 sleep_day <- read.csv("Data/FitBit Data/Fitabase Data 4.12.16-5.12.16/sleepDay_merged.csv")
 heart_rate_seconds <- read.csv("Data/FitBit Data/Fitabase Data 4.12.16-5.12.16/heartrate_seconds_merged.csv")
@@ -56,14 +64,13 @@ ggplot(data=daily_activity,
        steps taken per day and Calories burnt")
 
 ggplot(data=sleep_day, 
-       aes(x=TotalMinutesAsleep, y=TotalTimeInBed, alpha = TotalMinutesAsleep)) + 
+       aes(x=TotalMinutesAsleep, y=TotalTimeInBed, alpha = TotalMinutesAsleep, alpha = TotalTimeAsleep)) + 
   geom_point()+ labs(title = "Total Time in Bed vs Time Asleep")
 
-sleep_day %>% select(TotalTimeInBed, TotalMinutesAsleep) %>% 
-  summary()
+
 
 combined_data <- merge(sleep_day, daily_activity, by = "Id", all.x = TRUE, all.y = TRUE)
-
+n_distinct(combined_data$Id)
 combined_data_clean <- na.omit(combined_data)
 
 ggplot(combined_data, aes(x = TotalMinutesAsleep, y = SedentaryMinutes)) +
@@ -74,22 +81,9 @@ ggplot(combined_data, aes(x = TotalMinutesAsleep, y = SedentaryMinutes)) +
     title = "Relationship Between Sleep Duration and Sedentary Minutes"
   )
 
-ggplot(combined_data_clean, aes(x = TotalMinutesAsleep, y = TotalSteps)) +
-  geom_point() +
-  labs(
-    x = "Total Minutes Asleep",
-    y = "Total Steps",
-    title = "Relationship Between Sleep Duration and Daily Step Count"
-  )
 
-correlation <- cor(combined_data_clean$TotalMinutesAsleep, combined_data_clean$TotalSteps)
-correlation
 
-combined_data %>% 
-  select(TotalSteps) %>% 
-  summary()
-
-combined_data_clean <- combined_data_clean %>% 
+combined_data_clean <- combined_data %>% 
   group_by (Id) %>% 
   summarise(avg_daily_steps= mean(TotalSteps), 
             avg_daily_cal= mean(Calories), 
