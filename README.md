@@ -4,7 +4,7 @@
 #### Title: Bellabeat_case_study
 #### Author: Brian Ondiso
 #### Date: 2023-10-07
-
+[This project on Kaggle!][](https://www.kaggle.com/code/brianondiso/bellabeat-case-study-google-data-analytics)
 ---
 
 ## About The Company
