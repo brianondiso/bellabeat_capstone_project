@@ -1,9 +1,8 @@
-
 # BellaBeat Google Data Analytics Capstone Project
 ---
-#### Title: Bellabeat_case_study
-#### Author: Brian Ondiso
-#### Date: 2023-10-07
+Title: Bellabeat_case_study
+Author: Brian Ondiso
+Date: 2023-10-07
 
 ---
 
@@ -34,7 +33,7 @@ Data Source: [Fitbit Fitness Tracker Data](https://www.kaggle.com/datasets/arash
 *Comprehensive: Medium – dataset contains multiple fields on daily activity intensity, calories used, daily steps taken, daily sleep time and weight record.
 *Current: Low – This data is from May 2016, which means data is not current and user habits may have    changed over the period of time.
 
-*Limitations of the dataset
+# *Limitations of the dataset
 
 Data of only 30 users is available, a larger sample size is preferred for the more accurate analysis.
 The age of the users is unknown. Therefore ideal judgment criteria can not be defined.
@@ -45,6 +44,7 @@ reading.
 ## Process
 
 ## Installing and loading common packages and libraries
+
 ```{r }
 library(tidyverse)
 library(janitor)
