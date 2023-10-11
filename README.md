@@ -22,7 +22,7 @@ Urška Sršen: Bellabeat’s co-founder and Chief Creative Officer
 Bellabeat marketing analytics team
 
 ## 2. Prepare
-Data Source: [Fitbit Fitness Tracker Data](https://www.kaggle.com/datasets/arashnic/fitbit/data) by MÖBIUS Thirty eligible Fitbit users consented to the submission of personal tracker data, including minute-level output for physical activity, heart rate, and sleep monitoring. Individual reports can be parsed by export session ID (column A) or timestamp (column B). Variation between output represents use of different types of Fitbit trackers and individual tracking behaviors/preferences. The data set contains 18 csv files.
+Data Source: [Fitbit Fitness Tracker Data](https://www.kaggle.com/datasets/arashnic/fitbit/data) by MÖBIUS Thirty eligible Fitbit users consented to the submission of personal tracker data, including minute-level output for physical activity, heart rate, and sleep monitoring. Individual reports can be parsed by export session ID (column A) or timestamp (column B). Variation between output represents the use of different types of Fitbit trackers and individual tracking behaviors/preferences. The data set contains 18 CSV files.
 
 
 ![FitBit Fitness Tracker Data](https://github.com/brianondiso/bellabeat_capstone_project/blob/main/images/image_data_cover.webp)
@@ -126,7 +126,7 @@ weight_log %>% select(WeightKg, BMI) %>% summary()
 ```
 ![weightlogsum](https://github.com/brianondiso/bellabeat_capstone_project/blob/main/images/weightsum.png)
 
-BMI is a simple index of weight-to-height that is commonly used to classify underweight, overweight and obesity in adults
+BMI is a simple index of weight-to-height that is commonly used to classify underweight, overweight and obese in adults
 
 We will put  them into 5 categories
 BMI <17.0: thinness
@@ -202,14 +202,12 @@ The relationship is not completely linear, indicating that individuals are spend
 in bed but are not sleeping.
 The company can invest in creating an App that locks you out of your phone for a period of 7 hours.
 
-## Merging datasets together, sleep day and daily activity by ID column
+## Merging datasets together, sleep day and daily activity by Id column
 ```{r}
 combined_data <- merge(sleep_day, daily_activity, by = "Id", all.x = TRUE, all.y = TRUE)
 
 ```
-```{r}
-n_distinct(combined_data$Id)
-```
+
 #Exploring the combined data
 ```{r}
 combined_data_clean <- na.omit(combined_data)
@@ -227,43 +225,27 @@ ggplot(combined_data, aes(x = TotalMinutesAsleep, y = SedentaryMinutes)) +
   )
 ```
 
-There is a negative correlation between sedentary minutes and sleep duration, suggesting that increased sedentary time is not associated with reduced sleep quality.
+![ggplot_combined_data](https://github.com/brianondiso/bellabeat_capstone_project/blob/main/images/ggplot_combined_data.png)
 
-We check if there is a relationship between Sleep duration and Steps taken in a day using both geom_point in ggplot2 and cor in R.
-```{r}
-ggplot(combined_data_clean, aes(x = TotalMinutesAsleep, y = TotalSteps)) +
-  geom_point() +
-  labs(
-    x = "Total Minutes Asleep",
-    y = "Total Steps",
-    title = "Relationship Between Sleep Duration and Daily Step Count"
-  )
-```
-
-```{r}
-correlation <- cor(combined_data_clean$TotalMinutesAsleep, combined_data_clean$TotalSteps)
-correlation
-
-```
-The correlation is -0.0985 indicating that there may not be a strong linear relationship between sleep duration and daily step count.
 
 ## Steps
-Summary Statistics for combined data
+Summary Statistics for Combined Data
 ```{r}
 combined_data %>% 
   select(TotalSteps) %>% 
   summary()
 ```
+![steps_summary](https://github.com/brianondiso/bellabeat_capstone_project/blob/main/images/sumary_total_steps.png)
 
-The average steps taken by candidates is 8124. Maximum steps taken is 36019.
+The average number of steps taken by candidates is 8124. The maximum steps taken is 36019.
 
 We will classify them into four groups such as:
 For general fitness, most adults should aim for 10,000 steps per day, with fewer than 5,000 steps being a sign of a sedentary lifestyle. However, the number will depend on a person's age, current fitness level, and health goals. This recommendation comes from the Centers for Disease Control and Prevention (CDC)
 
-Sedentary - less than 5000 steps a day.
-Lightly active - between 5000 and 7500 steps per day.
-fairly active - between 7500 and 10000 steps per day.
-Very active - more than 10000 steps per day
+Sedentary - less than 5,000 steps a day.
+Lightly active - between 5,000 and 7,500 steps per day.
+fairly active - between 7,500 and 10,000 steps per day.
+Very active - more than 10,000 steps per day
 
 ```{r}
 combined_data_clean <- combined_data_clean %>% 
@@ -282,7 +264,7 @@ combined_data_clean <- combined_data_clean %>%
 head(combined_data_clean)
 
 ```
-
+![usertpe](https://github.com/brianondiso/bellabeat_capstone_project/blob/main/images/user_type_activity_level.png)
 
 ```{r}
 percentages_user_type_steps <- combined_data_clean %>%
@@ -290,11 +272,14 @@ group_by(user_type) %>%
 summarise(total= n()) %>%
 mutate(total_percent= scales::percent (total/sum(total)))
 
-
 head(percentages_user_type_steps)
 ```
+![pcntusertype](https://github.com/brianondiso/bellabeat_capstone_project/blob/main/images/head_pcnt_user_type.png)
+
+
 The summary shows 29% of the participants are living a sedentary life. 
 We visualize the results;
+
 ```{r}
 ggplot(combined_data_clean[which(combined_data_clean$avg_daily_steps>0),], 
        aes(user_type,avg_daily_steps, fill=user_type))+
@@ -305,17 +290,20 @@ ggplot(combined_data_clean[which(combined_data_clean$avg_daily_steps>0),],
        x= " ", y="total steps")+
   scale_fill_brewer(palette="BuPu")
 ```
+![usertpe](https://github.com/brianondiso/bellabeat_capstone_project/blob/main/images/boxplt_usertype.png)
 
 ## We try to find out the most active days of the week
 
-But first wee need to glimpse at the data;
+But first we need to glimpse at the data;
 ```{r}
 glimpse(daily_activity)
 ```
-We convert Activity date to date format
+![usertpe](https://github.com/brianondiso/bellabeat_capstone_project/blob/main/images/glimpsedaily_data.png)
+
+We convert the Activity date to date format
 
 ```{r}
-#dealing with dates -load lubridate()
+#dealing with dates -load lubricate()
 daily_activity_clean <- daily_activity %>%
   na.omit() %>%
   mutate(ActivityDate = as.Date(ActivityDate, format = "%m/%d/%Y")) 
@@ -324,9 +312,9 @@ daily_activity_clean <- daily_activity %>%
 head(daily_activity_clean)
 
 ```
+![head_daily_activ](https://github.com/brianondiso/bellabeat_capstone_project/blob/main/images/dates.png)
 
-
-Create weekday column;
+Create a weekday column;
 
 ```{r}
 Activity_by_week <- daily_activity_clean %>%
@@ -337,8 +325,9 @@ Activity_by_week$weekday <-ordered(Activity_by_week$weekday, levels=c("Monday", 
  
 head(Activity_by_week)
 ```
+![week_activity](https://github.com/brianondiso/bellabeat_capstone_project/blob/main/images/wee_day.png)
 
-We visulize our findings;
+We visualize our findings;
 ```{r}
 # Define custom colors and labels
 custom_colors_steps <- c('#ff99cc', '#ff6666', '#99ff99', '#cccccc', '#ffcc99', '#33ccff', '#99ccff')
@@ -353,6 +342,8 @@ ggplot(Activity_by_week) +
 
 ```
 
+![](https://github.com/brianondiso/bellabeat_capstone_project/blob/main/images/activity_by_week.png)
+
 We can use the dame to visualize sedentary by week.
 
 ```{r}
@@ -366,6 +357,8 @@ ggplot(Activity_by_week) +
   theme(axis.text.x = element_text(angle = 45, vjust = 0.5, hjust = 0.2))
 
 ```
+![](https://github.com/brianondiso/bellabeat_capstone_project/blob/main/images/sedetary_weekbarplot.png)
+
 
 ```{r}
 # Define custom colors
@@ -379,17 +372,21 @@ ggplot(Activity_by_week) +
   theme(axis.text.x = element_text(angle = 45, vjust = 0.5, hjust = 0.2))
 
 ```
-The most active days starts from Monday and keeps dropping throughout the week with Sunday having the 
+
+![va](https://github.com/brianondiso/bellabeat_capstone_project/blob/main/images/ver_active_barplt.png)
+
+
+The most active days start on Monday and keep dropping throughout the week with Sunday having the 
 lowest activity.
 
 
 ## Act Phase
 
 ## Conclusion
-There is a noticeable trend where user activity is highest on Tuesday, gradually declining as the week progresses. This pattern indicate a normal activity where activities begin on Monday peaking on Tuesday.
+There is a noticeable trend where user activity is highest on Tuesday, gradually declining as the week progresses. This pattern indicates a normal activity where activities begin on Monday peaking on Tuesday.
 
 
-Users are most inactive on Fridays, on an average, they spend 16.52 hours in sedentary activities, significantly exceeding the NIH's recommended target of less than 8 hours.
+Users are most inactive on Fridays, on average, they spend 16.52 hours in sedentary activities, significantly exceeding the NIH's recommended target of less than 8 hours.
 49.3 percent are overweight.
 This indicates a high level of inactivity, which can have adverse health implications.
 
@@ -401,9 +398,9 @@ Recommendations for Bellabeat Marketing Strategy:
 Develop features and notifications in the fitness watch and app that encourage users to increase their daily activity.
 Segment users to offer challenges, rewards, and reminders to meet the personalized activity goals based on each user's fitness level and progress.
 
-Implement features that help users reduce sedentary hours. These could include information on standing desks for work, reminders to stand or move after prolonged inactivity. Offer features that track and display sedentary time, helping users become more aware of their habits.
+Implement features that help users reduce sedentary hours. These could include information on standing desks for work, and reminders to stand or move after prolonged inactivity. Offer features that track and display sedentary time, helping users become more aware of their habits.
 
-Highlight the sleep tracking features of the fitness watches in marketing materials. Promote the connection between time in bed and time a sleep. Educate users about the benefits of adequate sleep for overall health and introduce apps that locks you out of your phone when you are in bed.
+Highlight the sleep-tracking features of the fitness watches in marketing materials. Promote the connection between time in bed and time a sleep. Educate users about the benefits of adequate sleep for overall health and introduce apps that lock you out of your phone when you are in bed.
 
 Develop marketing campaigns and resources aimed at heavy users. Showcase specialized fitness plans, nutritional guidance, and support services tailored to their needs.
 
