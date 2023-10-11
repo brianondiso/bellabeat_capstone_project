@@ -4,7 +4,8 @@
 #### Title: Bellabeat_case_study
 #### Author: Brian Ondiso
 #### Date: 2023-10-07
-[[This project on Kaggle!](https://github.com/brianondiso/bellabeat_capstone_project/blob/main/resources/site-logo-kaggle.svg)](https://www.kaggle.com/code/brianondiso/bellabeat-case-study-google-data-analytics)
+[![Kaggle Logo](https://github.com/brianondiso/bellabeat_capstone_project/blob/main/resources/site-logo-kaggle.svg)](https://www.kaggle.com/code/brianondiso/bellabeat-case-study-google-data-analytics)
+
 ---
 
 ## About The Company
@@ -51,6 +52,7 @@ library(lubridate)
 ## Upload your CSV files to R
 Remember to upload your CSV files to your project from the relevant data source:
 [FitBit data] (https://www.kaggle.com/arashnic/fitbit)
+
 ```{r Upload your CSV files to R }
 daily_activity <- read.csv("Data/FitBit Data/Fitabase Data 4.12.16-5.12.16/dailyActivity_merged.csv")
 sleep_day <- read.csv("Data/FitBit Data/Fitabase Data 4.12.16-5.12.16/sleepDay_merged.csv")
