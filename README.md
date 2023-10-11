@@ -24,9 +24,6 @@ Bellabeat marketing analytics team
 ## 2. Prepare
 Data Source: [Fitbit Fitness Tracker Data](https://www.kaggle.com/datasets/arashnic/fitbit/data) by MÖBIUS Thirty eligible Fitbit users consented to the submission of personal tracker data, including minute-level output for physical activity, heart rate, and sleep monitoring. Individual reports can be parsed by export session ID (column A) or timestamp (column B). Variation between output represents the use of different types of Fitbit trackers and individual tracking behaviors/preferences. The data set contains 18 CSV files.
 
-
-![FitBit Fitness Tracker Data](https://github.com/brianondiso/bellabeat_capstone_project/blob/main/images/image_data_cover.webp)
-
 ## Roccc Analysis
 
 * Reliability: Low – dataset was collected from 30 individuals whose gender is unknown.
