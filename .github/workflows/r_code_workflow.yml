@@ -19,4 +19,4 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Run R script
-      run: https://github.com/brianondiso/bellabeat_capstone_project/blob/main/bellabeat_case_study.R
+      run: https://github.com/brianondiso/bellabeat_capstone_project/blob/main/README.md
