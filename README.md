@@ -1,10 +1,15 @@
 
 # BellaBeat Google Data Analytics Capstone Project
 ---
-#### Title: Bellabeat_case_study
-#### Author: Brian Ondiso
-#### Date: 2023-10-07
-[![Kaggle Logo](https://github.com/brianondiso/bellabeat_capstone_project/blob/main/resources/site-logo-kaggle.svg)](https://www.kaggle.com/code/brianondiso/bellabeat-case-study-google-data-analytics)
+<p>Title: Bellabeat_case_study</p> 
+- Author: Brian Ondiso
+- Date: 2023-10-07
+
+<a href="https://www.kaggle.com/code/brianondiso/bellabeat-case-study-google-data-analytics" target="_blank" rel="noopener noreferrer">
+  <img src="https://github.com/brianondiso/bellabeat_capstone_project/blob/main/resources/site-logo-kaggle.svg" alt="Kaggle Logo" width="150" height="150">
+  <p>Edit the code on Kaggle</p>
+</a>
+
 
 ---
 
