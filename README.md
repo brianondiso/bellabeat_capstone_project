@@ -8,8 +8,8 @@
 ## Collaboration
 <div style="text-align: right;">
   <a href="https://www.kaggle.com/code/brianondiso/bellabeat-case-study-google-data-analytics" target="_blank" rel="noopener noreferrer">
-    <img src="https://github.com/brianondiso/bellabeat_capstone_project/blob/main/resources/site-logo-kaggle.svg" alt="Kaggle Logo" width="150" height="150" style="float: right;">
-    <p style="float: right; color: #00ab6c;">Edit the code on Kaggle</p>
+    <img src="https://github.com/brianondiso/bellabeat_capstone_project/blob/main/resources/site-logo-kaggle.svg" alt="Kaggle Logo" width="50" height="50" style="float: right;">
+   
   </a>
 </div>
 
