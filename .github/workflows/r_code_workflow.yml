@@ -1,0 +1,22 @@
+name: Run R Code
+
+on:
+  push:
+    branches:
+      - main  # Change to your repository's main branch.
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Set up R
+      uses: r-lib/actions/setup-r@v1
+      with:
+        r-version: 4.x  # Change to your desired R version.
+
+    - name: Check out code
+      uses: actions/checkout@v2
+
+    - name: Run R script
+      run: https://github.com/brianondiso/bellabeat_capstone_project/blob/main/bellabeat_case_study.R
