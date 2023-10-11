@@ -29,12 +29,11 @@ Data Source: [Fitbit Fitness Tracker Data](https://www.kaggle.com/datasets/arash
 
 ## Roccc Analysis
 
-*Reliability: Low – dataset was collected from 30 individuals whose gender is unknown.
-*Originality: Low – third-party data collected using Amazon Mechanical Turk.
-*Comprehensive: Medium – dataset contains multiple fields on daily activity intensity, calories used, daily steps taken, daily sleep time and weight record.
-*Current: Low – This data is from May 2016, which means data is not current and user habits may have    changed over the period of time.
-
-*Limitations of the dataset
+* Reliability: Low – dataset was collected from 30 individuals whose gender is unknown.
+* Originality: Low – third-party data collected using Amazon Mechanical Turk.
+* Comprehensive: Medium – dataset contains multiple fields on daily activity intensity, calories used, daily steps taken, daily sleep time and weight record.
+* Current: Low – This data is from May 2016, which means data is not current and user habits may have    changed over the period of time.
+* Limitations of the dataset
 
 Data of only 30 users is available, a larger sample size is preferred for the more accurate analysis.
 The age of the users is unknown. Therefore ideal judgment criteria can not be defined.

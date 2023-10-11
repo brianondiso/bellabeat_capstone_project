@@ -5,7 +5,6 @@ library(here)
 library(outliers)
 
 
-
 daily_activity <- read.csv("Data/FitBit Data/Fitabase Data 4.12.16-5.12.16/dailyActivity_merged.csv")
 sleep_day <- read.csv("Data/FitBit Data/Fitabase Data 4.12.16-5.12.16/sleepDay_merged.csv")
 heart_rate_seconds <- read.csv("Data/FitBit Data/Fitabase Data 4.12.16-5.12.16/heartrate_seconds_merged.csv")
